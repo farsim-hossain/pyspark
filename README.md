@@ -1,2 +1,2 @@
 # pyspark
-Repository for Spark exercises
+Repository for Spark exercises. 
