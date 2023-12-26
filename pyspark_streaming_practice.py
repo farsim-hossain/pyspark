@@ -22,4 +22,15 @@ df = spark.readStream \
     .option("startingOffset", "earliest") \
     .load()
 
+# writing messages to kafka topic
+
+df.selectExpr("CAST(id AS STRING) AS key", "to_json(struct (*)) AS value" ) \
+    .writeStream \
+    .format('kafka') \
+    .outputMode('append') \
+    .option("kafka.bootstrap.servers", "192.168.1.100:9092") \
+    .option("topic", "josn_data_topic") \
+    .start() \
+    .awaitTermination()
+
 
