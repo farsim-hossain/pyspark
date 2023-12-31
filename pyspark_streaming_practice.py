@@ -33,4 +33,3 @@ df.selectExpr("CAST(id AS STRING) AS key", "to_json(struct (*)) AS value" ) \
     .start() \
     .awaitTermination()
 
-
